@@ -1,6 +1,11 @@
 #Outdoors: Front of house #label west_of_house
 
-define neighbor = Character("", image="neighbor")
+define neighbor = DynamicCharacter(
+    "neighbor_name",
+    who_color="#880022",
+    image="neighbor",
+    what_color="#ffcccc",
+)
 
 image neighbor good = "foebuck_good.png"
 image neighbor indignant = "foebuck_indignant.png"
@@ -69,6 +74,8 @@ label call_out:
 label hello_neighbor:
     show neighbor oops
 
+    $ neighbor_name = ""
+
     neighbor "Good luck getting anyone to answer."
     "Why's that?"
     neighbor "Weird people..."
@@ -84,6 +91,9 @@ label neighbor_yeah:
 
     neighbor "Word of advice?"
     neighbor "Keep an eye on your things."
+
+    $ neighbor_name = "Neighbor"
+
     neighbor "These people...my neighbors..."
     neighbor "They are not accountable."
     neighbor "Do you consider yourself accountable?"
@@ -126,8 +136,9 @@ label neighbor_accountable:
 
 label neighbor_vacuum_back:
     show neighbor indignant
+    # log PC as sarcastic?
     neighbor "You're pretty naive if you'd believe that."
-    return
+    jump neighbor_vacuum
 
 label neighbor_vacuum:
     show neighbor oops
