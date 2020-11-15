@@ -1,6 +1,10 @@
 # Outside
 
-define block = Character("", advance=False)
+#init python:
+#    renpy.register_bmfont("mono", 22, filename="Ubuntu-M.ttf")
+
+define control = Character("", advance=False, what_font="LiberationMono-Regular.ttf")
+define narrate = Character("", what_font="LiberationMono-Regular.ttf")
 
 image testimonial = "anonymous-testimonial.png"
 
@@ -15,21 +19,17 @@ image testimonial = "anonymous-testimonial.png"
 #  <east>
 #
 
-image bg disassociate3 = "bg_disassociate3.jpg"
-
-image front_door_1 = "front-door-1.jpeg"
+image bg west_of_house = "bg_culty_door.png"
 
 label west_of_house:
 
-    scene bg disassociate3
-
-    show front_door_1 at top
+    scene bg west_of_house
 
     "Is this the right place?"
     "It doesn't look like anyone's home."
 
     # TODO: Front door label
-    block "You are west of a house with a {a=call:front_door}front door{/a}. There is a small {a=jump:mailbox}mailbox{/a} here. You may go {a=jump:north_of_house}north{/a} or {a=jump:south_of_house}south{/a}."
+    control "You are west of a house with a {a=call:front_door}front door{/a}. There is a small {a=jump:mailbox}mailbox{/a} here. You may go {a=jump:north_of_house}north{/a} or {a=jump:south_of_house}south{/a}."
 
     pass
 
@@ -37,7 +37,7 @@ label mailbox:
 
     show testimonial
 
-    "Opening the small mailbox reveals a leaflet."
+    narrate "Opening the small mailbox reveals a leaflet."
 
     "Sounds like someone had a bad time..."
 
@@ -61,7 +61,7 @@ label north_of_house:
 
     "TODO: Yard background scene."
 
-    block "You are north of the house. You may go {a=jump:east_of_house}east{/a} or {a=jump:west_of_house}west{/a}."
+    control "You are north of the house. You may go {a=jump:east_of_house}east{/a} or {a=jump:west_of_house}west{/a}."
 
 
 #
@@ -74,13 +74,13 @@ label north_of_house:
 #     <north><south>
 #
 
-image bg cultydoor = "bg_culty_door.png"
+image bg back_door = "bg_back_door_scrubbed.jpg"
 
 label east_of_house:
 
-    scene bg cultydoor
+    scene bg back_door
 
-    block "You are east of the house. There is a {a=call:back_door}back door{/a} here. ______{a=jump:newcomer}newcomer{/a} description___________________________. You may go {a=jump:north_of_house}north{/a} or {a=jump:south_of_house}south{/a}."
+    control "You are east of the house. There is a {a=call:back_door}back door{/a} here. ______{a=jump:newcomer}newcomer{/a} description___________________________. You may go {a=jump:north_of_house}north{/a} or {a=jump:south_of_house}south{/a}."
 
 
 #
@@ -96,5 +96,5 @@ label south_of_house:
 
     scene bg yuxta
 
-    block "You are south of the house. There is an enormous {a=call:snake}snake{/a} here. You may go {a=jump:east_of_house}east{/a} or {a=jump:west_of_house}west{/a}."
+    control "You are south of the house. There is an enormous {a=call:snake}snake{/a} here. You may go {a=jump:east_of_house}east{/a} or {a=jump:west_of_house}west{/a}."
 
