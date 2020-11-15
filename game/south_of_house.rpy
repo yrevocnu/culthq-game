@@ -1,23 +1,28 @@
-Outdoors: Snake #label south_of_house
-define snake = Character("", image="snake")
+#Outdoors: Snake #label south_of_house
+define snake = Character("", image="snake", what_color="#ccffcc")
 
 
-label south_of_house:
+label snake:
 
     "There's a huge snake here."
     "Who would put something like this in their backyard?"
     "I wonder what it's made of..."
     "Maybe I'll touch it."
+    call snake_menu
+
+label snake_menu:
 
     menu:
-        "Touch the snake's eyes"
-            jump snake_eyes
-        "Touch the snake's tongue"
+        "Touch the snake's eyes":
+            call snake_eyes
+        "Touch the snake's tongue":
             jump snake_tongue
-        "Touch the snake's fangs"
-            jump snake_fangs
-        "Touch the snake's skin"
-            jump snake_skin
+        "Touch the snake's fangs":
+            call snake_fangs
+        "Touch the snake's skin":
+            call snake_skin
+
+    jump south_of_house
 
 label snake_eyes:
 
@@ -25,6 +30,7 @@ label snake_eyes:
     "And warm."
     "Ugh, and it got slime on my fingers."
     "What the hell is this thing?"
+    jump snake_menu
 
 label snake_fangs:
 
@@ -32,6 +38,7 @@ label snake_fangs:
     "Some kind of metal."
     "I think my hand's going numb..."
     "Bizarre..."
+    jump snake_menu
 
 label snake_skin:
 
@@ -40,6 +47,7 @@ label snake_skin:
     "Something's beating underneath."
     "Is it the music in the house?"
     "Or something...alive...?"
+    jump snake_menu
 
 label snake_tongue:
 
@@ -50,10 +58,10 @@ label snake_tongue:
     "I think I can move it."
 
     menu: 
-        "Turn the tongue"
+        "Turn the tongue":
             jump snake_tongue_turned
-        "Leave the tongue alone"
-            jump #back to snake menu
+        "Leave the tongue alone":
+            jump south_of_house
 
 label snake_tongue_turned:
 
@@ -69,11 +77,11 @@ label snake_tongue_turned:
     snake "Are you here for someone?"
 
     menu:
-        "Yeah, my friend's inside."
+        "Yeah, my friend's inside.":
             jump snake_friend
-        "I'm actually looking for the workshop."
+        "I'm actually looking for the workshop.":
             jump snake_workshop
-        "I think I'm lost. Can you help me?"
+        "I think I'm lost. Can you help me?":
             jump snake_lost
 
 label snake_friend:
@@ -82,11 +90,11 @@ label snake_friend:
     snake "Your friend didn't happen to give you an invitation, did she?"
 
     menu:
-        "She did! I have it here somewhere..."
+        "She did! I have it here somewhere...":
             jump snake_lie
-        "She didn't tell me anything about that."
+        "She didn't tell me anything about that.":
             jump snake_truth
-        "Wait, how do you know my friend's a she?"
+        "Wait, how do you know my friend's a she?":
             jump snake_friend_2
 
 label snake_lie:
@@ -95,11 +103,13 @@ label snake_lie:
     snake "You'll just need to show your ticket to the doorman."
     snake "You're friend has told us so much about you."
     snake "We're very excited to meet you."
+    jump south_of_house
 
 label snake_truth:
 
     snake "I'm sorry, but without an invitation you're out of luck."
     snake "Maybe you can find some around!"
+    jump south_of_house
 
 label snake_friend_2:
 
@@ -108,6 +118,7 @@ label snake_friend_2:
     snake "We don't know your friend is our friend."
     snake "Dangerous world out there..."
     snake "Can't let in just any old stranger off the street."
+    jump south_of_house
 
 label snake_workshop:
 
@@ -115,9 +126,9 @@ label snake_workshop:
     snake "You wouldn't happen to have an invitation to this workshop, would you?"
 
     menu:
-        "I must have it here somewhere..."
+        "I must have it here somewhere...":
             jump snake_lie
-        "I don't know anything about that."
+        "I don't know anything about that.":
             jump snake_truth
 
 label snake_lost:
@@ -129,10 +140,4 @@ label snake_lost:
     snake "Maybe stay a while."
     snake "Stay as long as you like."
 
-    #set snake_permission to true
-
-    menu:
-        "Go left"
-            jump west_of_house #front of house
-        "Go right"
-            jump east_of_house #back of house
+    jump south_of_house

@@ -1,21 +1,14 @@
 #Outdoors: Back of house #label east_of_house
 
-define newcomer = Character("", image="newcomer")
+define newcomer = Character("", image="newcomer", what_color="#ccccff")
+
+image newcomer face = "newcomer.png"
+
 define technologist = Character("", image="technologist")
-
-label east_of_house:
-
-    "There's some guy hanging out by that cool door."
-
-    menu:
-        "Approach him"
-            jump meet_newcomer
-        "Ignore him"
-            jump east_of_house_2
 
 label meet_newcomer:
 
-    show newcomer
+    show newcomer face
 
     "Hey, are you here for the workshop?"
     newcomer "Workshop?"
@@ -28,9 +21,9 @@ label meet_newcomer:
     newcomer "But you're not here for...?"
 
     menu:
-        "Oh yeah, no, I am, I just misunderstood you."
+        "Oh yeah, no, I am, I just misunderstood you.":
             jump newcomer_lie
-        "I'm just trying to get in to see my friend."
+        "I'm just trying to get in to see my friend.":
             jump newcomer_friend
 
 label newcomer_lie:
@@ -38,6 +31,7 @@ label newcomer_lie:
     newcomer "Got it. Got it."
     newcomer "Just keep it down, please."
     newcomer "And remember I was here first."
+    jump east_of_house
 
 label newcomer_friend:
 
@@ -45,10 +39,12 @@ label newcomer_friend:
     newcomer "Hey, do you think your friend could get me inside too?"
 
     menu:
-        "Sure. For something in return."
-            jump newcomer_bargain
-        "Forget it."
-            jump newcomer_annoy
+        "Sure. For something in return.":
+            call newcomer_bargain
+        "Forget it.":
+            call newcomer_annoy
+
+    jump east_of_house
 
 label newcomer_bargain:
 
@@ -56,6 +52,7 @@ label newcomer_bargain:
     newcomer "Fair enough, fair enough."
     newcomer "I'll tell you what."
     newcomer "If you get me through that front door, I'll give you as much as you like."
+    return
 
 label newcomer_annoy:
 
@@ -67,14 +64,7 @@ label newcomer_annoy:
     newcomer "I've got friends inside too."
     newcomer "You'll see."
     newcomer "We're all gonna be best friends before we know it."
-
-label east_of_house_2:
-
-    menu:
-        "Go left"
-            jump south_of_house #snake
-        "Go right"
-            jump north_of_house #yard
+    return
 
 label east_of_house_snake_permission:
 
@@ -89,7 +79,7 @@ label east_of_house_snake_permission:
     technologist "Right this way, shoes off, thank you."
 
     menu:
-        "Go inside"
+        "Go inside":
             jump map
-        "Run away"
+        "Run away":
             jump credits

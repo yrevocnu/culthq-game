@@ -1,6 +1,6 @@
 # Outdoors: Yard #north_of_house
 
-label north_of_house:
+label north_of_house_narrative:
 
     "It's just an empty yard."
     "Kind of ugly."
@@ -8,9 +8,9 @@ label north_of_house:
     "What's that thing on the ground?"
 
     menu:
-        "Pick it up"
+        "Pick it up":
             jump invitation
-        "Leave it alone"
+        "Leave it alone":
             jump north_of_house_2
 
 label invitation:
@@ -25,9 +25,9 @@ label invitation:
 label north_of_house_2:
 
     menu:
-        "Go right"
+        "Go right":
             jump east_of_house #back of house
-        "Go left"
+        "Go left":
             jump west_of_house #front of house
 
 

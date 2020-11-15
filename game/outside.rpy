@@ -80,7 +80,7 @@ label east_of_house:
 
     scene bg back_door
 
-    control "You are east of the house. There is a {a=call:back_door}back door{/a} here. ______{a=jump:newcomer}newcomer{/a} description___________________________. You may go {a=jump:north_of_house}north{/a} or {a=jump:south_of_house}south{/a}."
+    control "You are east of the house. There is a {a=call:back_door}back door{/a} here. ___ ___ {a=jump:meet_newcomer}newcomer{/a} description _____ _______ ______ _____ ____. You may go {a=jump:north_of_house}north{/a} or {a=jump:south_of_house}south{/a}."
 
 
 #
