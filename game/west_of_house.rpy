@@ -22,7 +22,7 @@ label front_door:
             call call_yes
         "No":
             call call_no
-    
+
     "That music inside is super loud."
     "How will I get in if no one can hear me?"
 
@@ -63,7 +63,7 @@ label call_out:
     "Can someone let me in?"
     "Might as well look around."
 
-    menu: 
+    menu:
         "North":
             jump hello_neighbor
         "South":
