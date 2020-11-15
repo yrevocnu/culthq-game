@@ -25,8 +25,11 @@ label west_of_house:
 
     show front_door_1 at top
 
+    "Is this the right place?"
+    "It doesn't look like anyone's home."
+
     # TODO: Front door label
-    block "You are west of a house with a {a=call:neighbor}front door{/a}. There is a small {a=jump:mailbox}mailbox{/a} here. You may go {a=jump:north_of_house}north{/a} or {a=jump:south_of_house}south{/a}."
+    block "You are west of a house with a {a=call:front_door}front door{/a}. There is a small {a=jump:mailbox}mailbox{/a} here. You may go {a=jump:north_of_house}north{/a} or {a=jump:south_of_house}south{/a}."
 
     pass
 
@@ -36,33 +39,25 @@ label mailbox:
 
     "Opening the small mailbox reveals a leaflet."
 
+    "Sounds like someone had a bad time..."
+
     hide testimonial
 
     jump west_of_house
 
-define nb = Character("", image="neighbor")
 
-image neighbor good = "foebuck_good.png"
-image neighbor indignant = "foebuck_indignant.png"
-image neighbor oops = "foebuck_oops.png"
-
-label neighbor:
-    show neighbor indignant
-    nb "I'll never forgive what you've done to me!"
-    show neighbor oops
-    nb "Oh I mistook you for somebody else"
-    show neighbor good
-    nb "Have a nice day!"
-    hide neighbor good
-    jump west_of_house
 
 # 
 # YARD: nothing. <west> <east>
 #
 
+image yard = "yard_NO_RIGHTS.jpg"
+
 label north_of_house:
 
     scene bg disassociate3
+
+    show yard at top
 
     "TODO: Yard background scene."
 
