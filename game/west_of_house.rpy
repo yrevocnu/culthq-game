@@ -63,17 +63,15 @@ label call_out:
     "Can someone let me in?"
     "Might as well look around."
 
-    menu:
-        "North":
-            jump hello_neighbor
-        "South":
-            jump hello_neighbor
+    $ call_out = True
 
+    jump west_of_house
 
 
 label hello_neighbor:
     show neighbor oops
 
+    $ met_neighbor = True
     $ neighbor_name = ""
 
     neighbor "Good luck getting anyone to answer."

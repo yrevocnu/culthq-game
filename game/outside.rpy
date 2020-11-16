@@ -21,12 +21,23 @@ image testimonial = "anonymous-testimonial.png"
 
 image bg west_of_house = "bg_culty_door.png"
 
+# flag for having visited west_of_house
+default visited_west_of_house = False
+
+# flag for having called out at the front door
+default call_out = False
+
+# flag for having met the neighbor
+default met_neighbor = False
+
 label west_of_house:
 
     scene bg west_of_house
 
-    "Is this the right place?"
-    "It doesn't look like anyone's home."
+    if not visited_west_of_house:
+        "Is this the right place?"
+        "It doesn't look like anyone's home."
+        $ visited_west_of_house = True
 
     # TODO: Front door label
     control "You are west of a house with a {a=call:front_door}front door{/a}. There is a small {a=jump:mailbox}mailbox{/a} here. You may go {a=jump:north_of_house}north{/a} or {a=jump:south_of_house}south{/a}."
@@ -54,6 +65,11 @@ label mailbox:
 image yard = "yard_NO_RIGHTS.jpg"
 
 label north_of_house:
+
+    # unusually, the neighbor will block you from moving at first
+    if call_out and not met_neighbor:
+        call hello_neighbor
+        jump west_of_house
 
     scene bg disassociate3
 
@@ -93,6 +109,11 @@ label east_of_house:
 image bg yuxta = "bg_yuxa-white.jpg"
 
 label south_of_house:
+
+    # unusually, the neighbor will block you from moving at first
+    if call_out and not met_neighbor:
+        call hello_neighbor
+        jump west_of_house
 
     scene bg yuxta
 
