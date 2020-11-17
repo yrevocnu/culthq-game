@@ -71,6 +71,8 @@ label call_out:
 label hello_neighbor:
     show neighbor oops
 
+    narrate "A man comes around the corner."
+
     $ met_neighbor = True
     $ neighbor_name = ""
 

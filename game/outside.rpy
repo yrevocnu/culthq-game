@@ -42,8 +42,12 @@ label west_of_house:
         "It doesn't look like anyone's home."
         $ visited_west_of_house = True
 
+    jump west_of_house_control
+
+label west_of_house_control:
+
     # TODO: Front door label
-    control "You are west of a house with a {a=call:front_door}front door{/a}. There is a small {a=jump:mailbox}mailbox{/a} here. You may go {a=jump:north_of_house}north{/a} or {a=jump:south_of_house}south{/a}."
+    control "You are west of a house with a {a=call:front_door}front door{/a}. There is a small {a=call:mailbox}mailbox{/a} here. You may go {a=jump:north_of_house}north{/a} or {a=jump:south_of_house}south{/a}."
 
     pass
 
@@ -57,7 +61,7 @@ label mailbox:
 
     hide testimonial
 
-    jump west_of_house
+    jump west_of_house_control
 
 
 
