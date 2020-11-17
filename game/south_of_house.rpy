@@ -1,16 +1,20 @@
 #Outdoors: Snake #label south_of_house
-define snake = Character("", image="snake", what_color="#ccffcc")
+define snake = Character("Snake", image="snake", what_color="#ccffcc")
 
 
 label snake:
 
-    "There's a huge snake here."
-    "Who would put something like this in their backyard?"
-    "I wonder what it's made of..."
-    "Maybe I'll touch it."
-    call snake_menu
+    if not yuxa_alive:
 
-label snake_menu:
+        "There's a huge snake here."
+        "Who would put something like this in their backyard?"
+        "I wonder what it's made of..."
+        "Maybe I'll touch it."
+        call dead_snake_menu
+    else:
+        call live_snake_menu
+
+label dead_snake_menu:
 
     menu:
         "Touch the snake's eyes":
@@ -30,7 +34,7 @@ label snake_eyes:
     "And warm."
     "Ugh, and it got slime on my fingers."
     "What the hell is this thing?"
-    jump snake_menu
+    jump dead_snake_menu
 
 label snake_fangs:
 
@@ -38,7 +42,7 @@ label snake_fangs:
     "Some kind of metal."
     "I think my hand's going numb..."
     "Bizarre..."
-    jump snake_menu
+    jump dead_snake_menu
 
 label snake_skin:
 
@@ -47,7 +51,7 @@ label snake_skin:
     "Something's beating underneath."
     "Is it the music in the house?"
     "Or something...alive...?"
-    jump snake_menu
+    jump dead_snake_menu
 
 label snake_tongue:
 
@@ -68,7 +72,13 @@ label snake_tongue_turned:
     "Whoa, the rumbling just got a lot louder."
     "I should probably get out of here."
 
-    show snake
+    show bg yuxa_resurrected with dissolve
+
+    $ yuxa_alive = True
+
+    call live_snake_menu
+
+label live_snake_menu:
 
     snake "Who's there?"
     "It sounds like an intercom."
@@ -100,9 +110,12 @@ label snake_friend:
 label snake_lie:
 
     snake "Excellent! Come right inside."
-    snake "You'll just need to show your ticket to the doorman."
+    snake "You'll just need to show your ticket at the front door."
     snake "You're friend has told us so much about you."
     snake "We're very excited to meet you."
+
+    $ front_door_open = True
+
     jump south_of_house
 
 label snake_truth:
@@ -139,5 +152,7 @@ label snake_lost:
     snake "Relax and make yourself comfortable."
     snake "Maybe stay a while."
     snake "Stay as long as you like."
+
+    $ back_door_open = True
 
     jump south_of_house

@@ -33,6 +33,9 @@ default met_neighbor = False
 # flag for holding an invitation
 default has_invitation = False
 
+# If the front door is open
+default front_door_open = False
+
 label west_of_house:
 
     scene bg west_of_house
@@ -103,6 +106,9 @@ label north_of_house_control:
 
 image bg back_door = "bg_back_door_scrubbed.jpg"
 
+# If the back door is open
+default back_door_open = False
+
 label east_of_house:
 
     scene bg back_door
@@ -112,8 +118,11 @@ label east_of_house_control:
     control "You are east of the house. There is a {a=call:back_door}back door{/a} here. ___ ___ {a=jump:meet_newcomer}newcomer{/a} description _____ _______ ______ _____ ____. You may go {a=jump:north_of_house}north{/a} or {a=jump:south_of_house}south{/a}."
 
 label back_door:
-    narrate "The back door is locked shut."
-    jump east_of_house_control
+    if not back_door_open:
+        narrate "The back door is locked shut."
+        jump east_of_house_control
+    else:
+        jump east_of_house_snake_permission
 
 #
 # SNAKE: See snake. (eyes) (tongue) (fang?) 
@@ -122,7 +131,10 @@ label back_door:
 #     The ask you which door you want to come through.
 #     <east> <west>
 #
-image bg yuxta = "bg_yuxa-white.jpg"
+image bg yuxa = "bg_yuxa-white.jpg"
+image bg yuxa_resurrected = "bg_yuxa_resurrected.jpg"
+
+default yuxa_alive = False
 
 label south_of_house:
 
@@ -131,7 +143,10 @@ label south_of_house:
         call hello_neighbor
         jump west_of_house
 
-    scene bg yuxta
+    if not yuxa_alive:
+        scene bg yuxa
+    else:
+        scene bg yuxa_resurrected
 
     control "You are south of the house. There is an enormous {a=call:snake}snake{/a} here. You may go {a=jump:east_of_house}east{/a} or {a=jump:west_of_house}west{/a}."
 
