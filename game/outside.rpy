@@ -107,8 +107,13 @@ label east_of_house:
 
     scene bg back_door
 
+label east_of_house_control:
+
     control "You are east of the house. There is a {a=call:back_door}back door{/a} here. ___ ___ {a=jump:meet_newcomer}newcomer{/a} description _____ _______ ______ _____ ____. You may go {a=jump:north_of_house}north{/a} or {a=jump:south_of_house}south{/a}."
 
+label back_door:
+    narrate "The back door is locked shut."
+    jump east_of_house_control
 
 #
 # SNAKE: See snake. (eyes) (tongue) (fang?) 
