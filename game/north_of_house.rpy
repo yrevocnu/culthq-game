@@ -1,26 +1,31 @@
 # Outdoors: Yard #north_of_house
 
-label north_of_house_narrative:
+image invitation = "invitation.png"
 
-    "It's just an empty yard."
-    "Kind of ugly."
-    "Bad smell coming from somewhere."
-    "What's that thing on the ground?"
+label empty_yard:
 
-    menu:
-        "Pick it up":
-            jump invitation
-        "Leave it alone":
-            jump north_of_house_2
+    if has_invitation:
+        narrate "The yard is empty."
 
-label invitation:
+        jump north_of_house_control
 
-    #displays image of event invitation
+    else:
+        jump pick_up_invitation
+
+label pick_up_invitation:
+
+    show invitation
+
+    $ has_invitation = True
+
     "I can't believe someone dropped this."
     "The paper feels almost like snakeskin."
     "The Future Ball..."
     "I guess I'm in the right place after all."
-    #invitation added to inventory; has invitation == true
+
+    hide invitation
+
+    jump north_of_house_control
 
 label north_of_house_2:
 

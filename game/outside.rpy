@@ -30,6 +30,9 @@ default call_out = False
 # flag for having met the neighbor
 default met_neighbor = False
 
+# flag for holding an invitation
+default has_invitation = False
+
 label west_of_house:
 
     scene bg west_of_house
@@ -77,7 +80,11 @@ label north_of_house:
 
     "TODO: Yard background scene."
 
-    control "You are north of the house. You may go {a=jump:east_of_house}east{/a} or {a=jump:west_of_house}west{/a}."
+    jump north_of_house_control
+
+label north_of_house_control:
+
+    control "You are north of the house. There is only an {a=call:empty_yard}empty yard{/a} here. You may go {a=jump:east_of_house}east{/a} or {a=jump:west_of_house}west{/a}."
 
 
 #
