@@ -11,7 +11,19 @@ image neighbor good = "foebuck_good.png"
 image neighbor indignant = "foebuck_indignant.png"
 image neighbor oops = "foebuck_oops.png"
 
+default tried_front_door = False
+
 label front_door:
+
+    if not tried_front_door:
+        jump try_front_door
+    else:
+        narrate "The door is still locked shut."
+        jump west_of_house_control
+
+label try_front_door:
+
+    $ tried_front_door = True
 
     "I can hear music inside though."
     "What are they listening to in there?"
