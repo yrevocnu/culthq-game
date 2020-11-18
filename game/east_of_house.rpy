@@ -1,14 +1,22 @@
 #Outdoors: Back of house #label east_of_house
 
-define newcomer = Character("", image="newcomer", what_color="#ccccff")
+define newcomer = Character(
+    "Newcomer",
+    image="newcomer",
+    who_color="#002288",
+    what_color="#ccccff"
+    )
 
 image newcomer face = "newcomer.png"
+
+default met_newcomer = False
 
 define technologist = Character("", image="technologist")
 
 label meet_newcomer:
 
-    show newcomer face
+    show newcomer face at left
+    $ met_newcomer = True
 
     "Hey, are you here for the workshop?"
     newcomer "Workshop?"
@@ -68,18 +76,23 @@ label newcomer_annoy:
 
 label east_of_house_snake_permission:
 
-    newcomer "Back already?"
-    "Someone's coming to let us in."
-    newcomer "So you pulled it off!"
-    newcomer "Well, thanks, buddy."
+    if met_newcomer:
+        show newcomer face at left
+        newcomer "Back already?"
+        "Someone's coming to let us in."
+        newcomer "So you pulled it off!"
+        newcomer "Well, thanks, buddy."
 
-    show technologist
+    show technologist at right
     
     technologist "Quick, both of you, come in fast so nobody sees you."
     technologist "Right this way, shoes off, thank you."
 
+    narrate "The newcomer slips in ahead of you through the back door."
+
     menu:
         "Go inside":
-            jump map
+            screen black
+            call screen ghmap
         "Run away":
             jump credits
