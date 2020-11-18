@@ -52,17 +52,27 @@ label west_of_house_control:
     # TODO: Front door label
     control "You are west of a house with a {a=call:front_door}front door{/a}. There is a small {a=call:mailbox}mailbox{/a} here. You may go {a=jump:north_of_house}north{/a} or {a=jump:south_of_house}south{/a}."
 
-    pass
+    return
+
+default has_testimonial = False
 
 label mailbox:
 
-    show testimonial
+    if not has_testimonial:
+        show testimonial
 
-    narrate "Opening the small mailbox reveals a leaflet."
+        narrate "Opening the small mailbox reveals a leaflet."
 
-    "Sounds like someone had a bad time..."
+        "Sounds like someone had a bad time..."
 
-    hide testimonial
+        hide testimonial
+
+        narrate "You pocket the anonymous testimonial."
+
+        $ has_testimonial = True
+
+    else:
+        narrate "The mailbox is empty."
 
     jump west_of_house_control
 
