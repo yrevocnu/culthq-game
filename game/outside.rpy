@@ -33,9 +33,6 @@ default met_neighbor = False
 # flag for holding an invitation
 default has_invitation = False
 
-# If the front door is open
-default front_door_open = False
-
 label west_of_house:
 
     scene bg west_of_house
@@ -102,7 +99,7 @@ label north_of_house:
 label north_of_house_control:
 
     control "You are north of the house. There is only an {a=call:empty_yard}empty yard{/a} here. You may go {a=jump:east_of_house}east{/a} or {a=jump:west_of_house}west{/a}."
-
+    return
 
 #
 # BACK: Back door.
@@ -126,6 +123,7 @@ label east_of_house:
 label east_of_house_control:
 
     control "You are east of the house. There is a {a=call:back_door}back door{/a} here. ___ ___ {a=jump:meet_newcomer}newcomer{/a} description _____ _______ ______ _____ ____. You may go {a=jump:north_of_house}north{/a} or {a=jump:south_of_house}south{/a}."
+    return
 
 label back_door:
     if not back_door_open:
@@ -159,4 +157,4 @@ label south_of_house:
         scene bg yuxa_resurrected
 
     control "You are south of the house. There is an enormous {a=call:snake}snake{/a} here. You may go {a=jump:east_of_house}east{/a} or {a=jump:west_of_house}west{/a}."
-
+    return

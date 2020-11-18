@@ -10,6 +10,7 @@ define newcomer = Character(
 image newcomer face = "newcomer.png"
 
 default met_newcomer = False
+default newcomer_inside = False
 
 define technologist = Character("", image="technologist")
 
@@ -88,6 +89,7 @@ label east_of_house_snake_permission:
     technologist "Quick, both of you, come in fast so nobody sees you."
     technologist "Right this way, shoes off, thank you."
 
+    $ newcomer_inside = True
     narrate "The newcomer slips in ahead of you through the back door."
 
     menu:

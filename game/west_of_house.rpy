@@ -12,10 +12,16 @@ image neighbor indignant = "foebuck_indignant.png"
 image neighbor oops = "foebuck_oops.png"
 
 default tried_front_door = False
+default front_door_open = False
 
 label front_door:
+    if front_door_open:
+        if has_invitation:
+            jump west_of_house_invitation
+        else:
+            jump west_of_house_no_invitation
 
-    if not tried_front_door:
+    elif not tried_front_door:
         jump try_front_door
     else:
         narrate "The door is still locked shut."
@@ -180,10 +186,10 @@ label neighbor_vacuum_no:
     neighbor "Good luck breaking and entering."
     return
 
-define cook = Character("", image="cook")
+define cook = Character("", image="cook", what_color="#aaffcc")
 
 label west_of_house_invitation:
-    "I guess I'll knock again"
+    show cook hello
     cook "Who's there?"
     "I have this invitation."
     cook "Let me see that."
@@ -193,16 +199,18 @@ label west_of_house_invitation:
     cook "Well, I'm happy to help out too."
     cook "Come visit me in the kitchen anytime."
 
+    hide cook
+
     menu:
         "Enter Cult HQ":
-            jump map
+            screen black
+            call screen ghmap
         "Leave":
             jump credits
 
-define librarian = Character("", image="librarian")
+define librarian = Character("", image="librarian", what_color="#ccaaff")
 
 label west_of_house_no_invitation:
-    "Might as well knock again."
     librarian "Who is it?"
     "I'm here to see my friend."
     librarian "We have no friends of anyone's here."
@@ -210,4 +218,6 @@ label west_of_house_no_invitation:
     librarian "Are your papers in order?"
     "Umm..."
     librarian "I'm afraid without the proper documentation you cannot proceed."
+
+    jump west_of_house_control
 
