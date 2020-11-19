@@ -13,9 +13,6 @@
 # The game starts here.
 
 label start:
-    
-    play music "music/Yrevocnu.mp3"
-
     jump west_of_house
 
 

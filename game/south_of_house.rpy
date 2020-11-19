@@ -80,6 +80,8 @@ label snake_tongue_turned:
 
 label live_snake_menu:
 
+    play music "music/Yrevocnu.mp3"
+
     snake "Who's there?"
     "It sounds like an intercom."
     "It's really crackly and hard to understand." 
