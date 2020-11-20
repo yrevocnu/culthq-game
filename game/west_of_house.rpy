@@ -33,22 +33,16 @@ label try_front_door:
 
     "I can hear music inside though."
     "What are they listening to in there?"
-    "Maybe I should call my friend..."
-
-    menu:
-        "Yes":
-            call call_yes
-        "No":
-            call call_no
-
     "That music inside is super loud."
     "How will I get in if no one can hear me?"
 
     menu:
+        "Call friend inside":
+            jump call_yes
         "Knock on door":
             jump knock_door
-        "Call out":
-            jump call_out
+        "Shout":
+            jump shout_out
 
 
 label call_yes:
@@ -56,12 +50,10 @@ label call_yes:
     "Is she seriously not going to pick up?"
     "{i}The number you have dialed is out of service. Please try again later.{/i}"
     "I hope she's OK..."
-    return
 
-label call_no:
-    "Better not to bother her."
-    return
+    $ called_friend = True
 
+    jump west_of_house_control
 
 label knock_door:
     "Waiting."
@@ -71,19 +63,17 @@ label knock_door:
     "Maybe I should never have come..."
     "Well, I guess I already drove three hours. Might as well have a look around."
 
-    menu:
-        "Call out":
-            jump call_out
+    jump west_of_house_control
 
-label call_out:
+label shout_out:
     "Hello!"
     "I'm here for the workshop!"
     "Can someone let me in?"
     "Might as well look around."
 
-    $ call_out = True
+    $ shouted_out = True
 
-    jump west_of_house
+    jump west_of_house_control
 
 
 label hello_neighbor:
@@ -177,6 +167,8 @@ label neighbor_vacuum_yes:
     show neighbor indignant
     neighbor "I'll make it worth your time, I promise."
     neighbor "And unlike some people, I keep my word."
+
+    $ accepted_neighbor_quest = True
     return
 
 label neighbor_vacuum_no:

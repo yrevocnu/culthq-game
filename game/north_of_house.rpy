@@ -4,13 +4,12 @@ image invitation = "invitation.png"
 
 label empty_yard:
 
-    if has_invitation:
+    if not has_invitation and accepted_neighbor_quest:
+        jump pick_up_invitation
+    else:
         narrate "The yard is empty."
 
         jump north_of_house_control
-
-    else:
-        jump pick_up_invitation
 
 label pick_up_invitation:
 
@@ -26,13 +25,5 @@ label pick_up_invitation:
     hide invitation
 
     jump north_of_house_control
-
-label north_of_house_2:
-
-    menu:
-        "Go right":
-            jump east_of_house #back of house
-        "Go left":
-            jump west_of_house #front of house
 
 

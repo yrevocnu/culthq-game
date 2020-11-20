@@ -24,11 +24,17 @@ image bg west_of_house = "bg_culty_door.png"
 # flag for having visited west_of_house
 default visited_west_of_house = False
 
+# flag for having called your friend
+default called_friend = False
+
 # flag for having called out at the front door
-default call_out = False
+default shouted_out = False
 
 # flag for having met the neighbor
 default met_neighbor = False
+
+# flad for having accepted the neighbor's quest (retrieve vacuum cleaner)
+default accepted_neighbor_quest = False
 
 # flag for holding an invitation
 default has_invitation = False
@@ -84,7 +90,7 @@ image yard = "yard_NO_RIGHTS.jpg"
 label north_of_house:
 
     # unusually, the neighbor will block you from moving at first
-    if call_out and not met_neighbor:
+    if shouted and not met_neighbor:
         call hello_neighbor
         jump west_of_house
 
@@ -147,7 +153,7 @@ default yuxa_alive = False
 label south_of_house:
 
     # unusually, the neighbor will block you from moving at first
-    if call_out and not met_neighbor:
+    if shouted_out and not met_neighbor:
         call hello_neighbor
         jump west_of_house
 
