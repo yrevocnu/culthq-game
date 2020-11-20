@@ -113,7 +113,7 @@ label snake_lie:
 
     snake "Excellent! Come right inside."
     snake "You'll just need to show your ticket at the front door."
-    snake "You're friend has told us so much about you."
+    snake "Your friend has told us so much about you."
     snake "We're very excited to meet you."
 
     $ front_door_open = True
