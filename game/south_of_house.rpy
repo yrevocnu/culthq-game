@@ -68,7 +68,7 @@ label snake_tongue:
             jump south_of_house
 
 label snake_tongue_turned:
-
+    stop music fadeout 1.0
     "Whoa, the rumbling just got a lot louder."
     "I should probably get out of here."
 
