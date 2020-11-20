@@ -104,7 +104,7 @@ label north_of_house:
 
 label north_of_house_control:
 
-    control "You are north of the house. There is only an {a=call:empty_yard}empty yard{/a} here. You may go {a=jump:east_of_house}east{/a} or {a=jump:west_of_house}west{/a}."
+    control "You are north of the house. There is only an {a=call:empty_yard}empty yard{/a} here. You may go {a=jump:west_of_house}west{/a} or {a=jump:east_of_house}east{/a}."
     return
 
 #
@@ -162,5 +162,5 @@ label south_of_house:
     else:
         scene bg yuxa_resurrected
 
-    control "You are south of the house. There is an enormous {a=call:snake}snake{/a} here. You may go {a=jump:east_of_house}east{/a} or {a=jump:west_of_house}west{/a}."
+    control "You are south of the house. There is an enormous {a=call:snake}snake{/a} here. You may go {a=jump:west_of_house}west{/a} or {a=jump:east_of_house}east{/a}."
     return
