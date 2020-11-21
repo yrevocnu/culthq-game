@@ -108,7 +108,7 @@ label east_of_house_snake_permission:
     menu:
         "Go inside":
             screen black
-            call screen ghmap
+            jump victory
         "Run away":
             jump credits
 

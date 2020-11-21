@@ -161,6 +161,10 @@ label neighbor_vacuum_yes:
     neighbor "I'll make it worth your time, I promise."
     neighbor "And unlike some people, I keep my word."
 
+    hide neighbor indignant
+
+    narrate "The man leaves abruptly, going north."
+
     $ accepted_neighbor_quest = True
     return
 
@@ -189,7 +193,7 @@ label west_of_house_invitation:
     menu:
         "Enter Cult HQ":
             screen black
-            call screen ghmap
+            jump victory
         "Leave":
             jump credits
 
