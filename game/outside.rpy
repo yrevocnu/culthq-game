@@ -162,5 +162,9 @@ label south_of_house:
     else:
         scene bg yuxa_resurrected
 
+    jump south_of_house_control
+
+label south_of_house_control:
+
     control "You are south of the house. There is an enormous {a=call:snake}snake{/a} here. You may go {a=jump:west_of_house}west{/a} or {a=jump:east_of_house}east{/a}."
     return

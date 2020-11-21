@@ -34,7 +34,7 @@ label snake_eyes:
     "And warm."
     "Ugh, and it got slime on my fingers."
     "What the hell is this thing?"
-    jump dead_snake_menu
+    jump south_of_house_control
 
 label snake_fangs:
 
@@ -42,7 +42,7 @@ label snake_fangs:
     "Some kind of metal."
     "I think my hand's going numb..."
     "Bizarre..."
-    jump dead_snake_menu
+    jump south_of_house_control
 
 label snake_skin:
 
@@ -51,7 +51,7 @@ label snake_skin:
     "Something's beating underneath."
     "Is it the music in the house?"
     "Or something...alive...?"
-    jump dead_snake_menu
+    jump south_of_house_control
 
 label snake_tongue:
 
@@ -65,7 +65,7 @@ label snake_tongue:
         "Turn the tongue":
             jump snake_tongue_turned
         "Leave the tongue alone":
-            jump south_of_house
+            jump south_of_house_control
 
 label snake_tongue_turned:
     stop music fadeout 1.0
@@ -93,8 +93,9 @@ label live_snake_menu:
             jump snake_friend
         "I'm actually looking for the workshop.":
             jump snake_workshop
-        "I think I'm lost. Can you help me?":
-            jump snake_lost
+        # SB: I think this one is too easy.
+        # "I think I'm lost. Can you help me?": 
+        #     jump snake_lost #
 
 label snake_friend:
 
@@ -157,4 +158,4 @@ label snake_lost:
 
     $ back_door_open = True
 
-    jump south_of_house
+    jump south_of_house_control
