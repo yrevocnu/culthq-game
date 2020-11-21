@@ -11,7 +11,6 @@ image neighbor good = "foebuck_good.png"
 image neighbor indignant = "foebuck_indignant.png"
 image neighbor oops = "foebuck_oops.png"
 
-default tried_front_door = False
 default front_door_open = False
 
 label front_door:
@@ -20,16 +19,10 @@ label front_door:
             jump west_of_house_invitation
         else:
             jump west_of_house_no_invitation
-
-    elif not tried_front_door:
-        jump try_front_door
     else:
-        narrate "The door is still locked shut."
-        jump west_of_house_control
+        jump try_front_door
 
 label try_front_door:
-
-    $ tried_front_door = True
 
     "I can hear music inside though."
     "What are they listening to in there?"
@@ -37,11 +30,11 @@ label try_front_door:
     "How will I get in if no one can hear me?"
 
     menu:
-        "Call friend inside":
+        "Call friend inside" if not called_friend:
             jump call_yes
         "Knock on door":
             jump knock_door
-        "Shout":
+        "Shout" if not shouted_out:
             jump shout_out
 
 
@@ -91,7 +84,7 @@ label hello_neighbor:
     neighbor "They invite you to one of their get-togethers?"
 
     menu:
-        "Yeah.":
+        "Yeah. There's a friend of mine in there.": # consider other options...
             jump neighbor_yeah
 
 label neighbor_yeah:
@@ -107,7 +100,7 @@ label neighbor_yeah:
     neighbor "Do you consider yourself accountable?"
 
     menu:
-        "More or less.":
+        "More or less.": ## option for a different personality trait...
             jump neighbor_accountable
         # "I wouldn't go that far.":
         #    jump neighbor_not_accountable

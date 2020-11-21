@@ -90,7 +90,7 @@ image yard = "yard_NO_RIGHTS.jpg"
 label north_of_house:
 
     # unusually, the neighbor will block you from moving at first
-    if shouted and not met_neighbor:
+    if shouted_out and not met_neighbor:
         call hello_neighbor
         jump west_of_house
 
