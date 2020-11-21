@@ -128,7 +128,7 @@ label east_of_house:
 
 label east_of_house_control:
 
-    control "You are east of the house. There is a {a=call:back_door}back door{/a} here. ___ ___ {a=jump:meet_newcomer}newcomer{/a} description _____ _______ ______ _____ ____. You may go {a=jump:north_of_house}north{/a} or {a=jump:south_of_house}south{/a}."
+    control "You are east of the house. There is a {a=call:back_door}back door{/a} here. A {a=jump:encounter_newcomer}loiterer{/a} with a watchful and longing face leans against the wall. You may go {a=jump:north_of_house}north{/a} or {a=jump:south_of_house}south{/a}."
     return
 
 label back_door:
