@@ -123,15 +123,15 @@ label neighbor_accountable:
 
     menu:
         "They gave it back?":
-            call neighbor_vacuum_back
+            call neighbor_vacuum_back from _call_neighbor_vacuum_back
         "Why don't you tell me.":
-            call neighbor_vacuum
+            call neighbor_vacuum from _call_neighbor_vacuum
 
     menu:
         "Sure.":
-            call neighbor_vacuum_yes
+            call neighbor_vacuum_yes from _call_neighbor_vacuum_yes
         "I don't know...":
-            call neighbor_vacuum_no
+            call neighbor_vacuum_no from _call_neighbor_vacuum_no
 
     jump west_of_house
 
@@ -175,20 +175,23 @@ label neighbor_vacuum_no:
     neighbor "Good luck breaking and entering."
     return
 
-define cook = Character("", image="cook", what_color="#aaffcc")
+define cook = Character("Cook", image="cook", what_color="#aaffcc")
+image friend delighted = "green-hair-girl.png"
 
 label west_of_house_invitation:
-    show cook hello
-    cook "Who's there?"
-    "I have this invitation."
-    cook "Let me see that."
-    cook "Yes, it looks like it's authentic."
-    cook "You know someone inside, right?"
-    cook "Someone to guide you?"
-    cook "Well, I'm happy to help out too."
-    cook "Come visit me in the kitchen anytime."
+    # the cook is one incarnation of the friend
+    # currently only visual
 
-    hide cook
+    # i.e., with this intro, the Friend becomes the Cook
+    # In another intro, the Friend might be the Technologist, etc.
+    friend "Who's there?"
+    "It's me! I have an invitation."
+    show friend delighted
+    narrate "The door swings open, revealing your friend."
+    friend "You made it!"
+    friend "Come on in!"
+
+    hide friend
 
     menu:
         "Enter Cult HQ":

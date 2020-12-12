@@ -10,21 +10,21 @@ label snake:
         "Who would put something like this in their backyard?"
         "I wonder what it's made of..."
         "Maybe I'll touch it."
-        call dead_snake_menu
+        call dead_snake_menu from _call_dead_snake_menu
     else:
-        call live_snake_menu
+        call live_snake_menu from _call_live_snake_menu
 
 label dead_snake_menu:
 
     menu:
         "Touch the snake's eyes":
-            call snake_eyes
+            call snake_eyes from _call_snake_eyes
         "Touch the snake's tongue":
             jump snake_tongue
         "Touch the snake's fangs":
-            call snake_fangs
+            call snake_fangs from _call_snake_fangs
         "Touch the snake's skin":
-            call snake_skin
+            call snake_skin from _call_snake_skin
 
     jump south_of_house
 
@@ -76,7 +76,7 @@ label snake_tongue_turned:
 
     $ yuxa_alive = True
 
-    call live_snake_menu
+    call live_snake_menu from _call_live_snake_menu_1
 
 label live_snake_menu:
 

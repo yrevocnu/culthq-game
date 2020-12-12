@@ -85,21 +85,16 @@ label mailbox:
 # YARD: nothing. <west> <east>
 #
 
-image yard = "yard_NO_RIGHTS.jpg"
+image bg yard = "empty_yard.jpg"
 
 label north_of_house:
 
     # unusually, the neighbor will block you from moving at first
     if shouted_out and not met_neighbor:
-        call hello_neighbor
+        call hello_neighbor from _call_hello_neighbor
         jump west_of_house
 
-    scene bg disassociate3
-
-    show yard at top
-
-    "TODO: Yard background scene."
-
+    scene bg yard
     jump north_of_house_control
 
 label north_of_house_control:
@@ -154,7 +149,7 @@ label south_of_house:
 
     # unusually, the neighbor will block you from moving at first
     if shouted_out and not met_neighbor:
-        call hello_neighbor
+        call hello_neighbor from _call_hello_neighbor_1
         jump west_of_house
 
     if not yuxa_alive:

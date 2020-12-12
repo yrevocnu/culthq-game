@@ -14,7 +14,13 @@ default met_newcomer = False
 default took_newcomer_deal = True
 default newcomer_inside = False
 
-define technologist = Character("", image="technologist")
+define technologist = Character(
+    "Technologist",
+    image="technologist",
+    what_color="#ffaacc",
+    who_color="#ff44cc")
+
+image technologist action  = "technologist_action.png"
 
 label encounter_newcomer:
     if not met_newcomer:
@@ -58,9 +64,9 @@ label newcomer_friend:
 
     menu:
         "Sure. For something in return.":
-            call newcomer_bargain
+            call newcomer_bargain from _call_newcomer_bargain
         "Forget it.":
-            call newcomer_annoy
+            call newcomer_annoy from _call_newcomer_annoy
 
     hide newcomer face
 
@@ -97,7 +103,7 @@ label east_of_house_snake_permission:
         newcomer "So you pulled it off!"
         newcomer "Well, thanks, buddy."
 
-    show technologist at right
+    show technologist action at topleft
     
     technologist "Quick, both of you, come in fast so nobody sees you."
     technologist "Right this way, shoes off, thank you."
