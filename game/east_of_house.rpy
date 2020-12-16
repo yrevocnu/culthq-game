@@ -87,6 +87,8 @@ label newcomer_annoy:
     newcomer "We're all gonna be best friends before we know it."
     return
 
+image friend delighted = "green-hair-girl.png"
+
 label east_of_house_snake_permission:
 
     if met_newcomer:
@@ -96,10 +98,12 @@ label east_of_house_snake_permission:
         newcomer "So you pulled it off!"
         newcomer "Well, thanks, buddy."
 
-    show technologist action at topleft
-    
-    technologist "Quick, both of you, come in fast so nobody sees you."
-    technologist "Right this way, shoes off, thank you."
+    show friend delighted at topleft
+    narrate "The door swings open, revealing your friend."
+    friend "You made it!"
+    friend "Come on in!"
+
+    hide friend
 
     $ newcomer_inside = True
     narrate "The [newcomer_name] slips in ahead of you through the back door."
