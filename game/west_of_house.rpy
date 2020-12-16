@@ -13,6 +13,15 @@ image neighbor oops = "foebuck_oops.png"
 
 default front_door_open = False
 
+
+define technologist = Character(
+    "Technologist",
+    image="technologist",
+    what_color="#ffaacc",
+    who_color="#ff44cc")
+
+image technologist action  = "technologist_action.png"
+
 label front_door:
     if front_door_open:
         if has_invitation:
@@ -176,22 +185,15 @@ label neighbor_vacuum_no:
     return
 
 define cook = Character("Cook", image="cook", what_color="#aaffcc")
-image friend delighted = "green-hair-girl.png"
+
 
 label west_of_house_invitation:
-    # the cook is one incarnation of the friend
-    # currently only visual
 
-    # i.e., with this intro, the Friend becomes the Cook
-    # In another intro, the Friend might be the Technologist, etc.
-    friend "Who's there?"
-    "It's me! I have an invitation."
-    show friend delighted
-    narrate "The door swings open, revealing your friend."
-    friend "You made it!"
-    friend "Come on in!"
+    ## technologist welcome here....
 
-    hide friend
+    show technologist action at top
+    technologist "Hello. I see you've been invited."
+    technologist "Right this way, shoes off, thank you."
 
     menu:
         "Enter Cult HQ":

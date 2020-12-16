@@ -14,13 +14,6 @@ default met_newcomer = False
 default took_newcomer_deal = True
 default newcomer_inside = False
 
-define technologist = Character(
-    "Technologist",
-    image="technologist",
-    what_color="#ffaacc",
-    who_color="#ff44cc")
-
-image technologist action  = "technologist_action.png"
 
 label encounter_newcomer:
     if not met_newcomer:
