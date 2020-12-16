@@ -76,11 +76,11 @@ label snake_tongue_turned:
 
     $ yuxa_alive = True
 
+    play music "music/Yrevocnu.mp3"
+
     call live_snake_menu from _call_live_snake_menu_1
 
 label live_snake_menu:
-
-    play music "music/Yrevocnu.mp3"
 
     snake "Who's there?"
     "It sounds like an intercom."
