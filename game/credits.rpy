@@ -22,7 +22,7 @@ label credits:
     play music "music/Steve Morrell - Video Game.mp3"
     $ credits_speed = 25
     scene black
-    show credits_image at Move((0.5, 1.0), (0.5, -1.3), credits_speed,
+    show credits_image at Move((0.5, 1.0), (0.5, -2.0), credits_speed,
                   xanchor=0.5, yanchor=0)
     with Pause(credits_speed+15)
 
